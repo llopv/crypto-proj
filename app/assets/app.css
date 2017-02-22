@@ -37,6 +37,10 @@ md-list .md-button.selected {
   color: #03a9f4;
 }
 
+md-list [md-subheader] {
+  padding: 0 20px;
+}
+
 md-sidenav md-list {
   padding: 0px 0px 8px 0px;
 }

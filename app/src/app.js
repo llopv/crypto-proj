@@ -13,6 +13,8 @@ export default angular.module( 'starter-app', [ 'ngMaterial', Users.name ] )
     // Register the user `avatar` icons
     $mdIconProvider
       .defaultIconSet("./assets/svg/avatars.svg", 128)
+      .icon("device_hub", "./assets/svg/device_hub.svg", 24)
+      .icon("panorama_fish_eye", "./assets/svg/panorama_fish_eye.svg", 24)
       .icon("menu", "./assets/svg/menu.svg", 24)
       .icon("share", "./assets/svg/share.svg", 24)
       .icon("google_plus", "./assets/svg/google_plus.svg", 24)
