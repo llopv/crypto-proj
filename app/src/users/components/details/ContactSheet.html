@@ -1,16 +1,31 @@
 <md-bottom-sheet class="md-list md-has-header">
-
-  <md-subheader>
-    Contact <span class="name">{{ $ctrl.user.name }}</span>:
+  <md-subheader ng-if="$ctrl.mode=='sign'">
+    Sign using <strong>{{ $ctrl.user.name }}</strong>'s <code>{{$ctrl.path}}</code> key:
   </md-subheader>
 
-  <md-list>
-    <md-item ng-repeat="item in $ctrl.items">
-      <md-button ng-click="$ctrl.performAction(item)">
-        <md-icon md-svg-icon="{{ item.icon }}"></md-icon>
-        {{item.name}}
-      </md-button>
-    </md-item>
-  </md-list>
+  <md-subheader ng-if="$ctrl.mode=='verify'">
+    Verify <strong>{{ $ctrl.user.name }}</strong>'s message using her <code>{{$ctrl.path}}</code> key:
+  </md-subheader>
 
+  <md-card>
+    <md-card-content>
+      <form ng-submit="$ctrl.mode=='sign' ? $ctrl.sign(): $ctrl.verify()">
+        <md-input-container class="full-width">
+          <textarea mdInput ng-model="$ctrl.message" placeholder="Message to {{$ctrl.mode=='sign'? 'sign' : 'verify'}}"></textarea>
+        </md-input-container>
+        <md-input-container class="full-width">
+          <textarea ng-readonly="$ctrl.mode=='sign'" mdInput ng-model="$ctrl.signature" placeholder="Signature"></textarea>
+          <md-hint align="end" style="float: right">{{$ctrl.valid}}</md-hint>
+        </md-input-container>
+        <md-button type="submit">{{$ctrl.mode=='sign' ? 'Sign': 'Verify'}}</md-button>
+      </form>
+    </md-card-content>
+  </md-card>
+
+  <md-button ng-if="$ctrl.mode=='sign'" class="md-fab md-fab-top-right" ng-click="$ctrl.copy('Private key', $ctrl.derivePriv($ctrl.path).xprivkey)" aria-label="Copy private key" title="Copy private key">
+    <md-icon md-svg-icon="private_key"></md-icon>
+  </md-button>
+  <md-button ng-if="$ctrl.mode=='verify'" class="md-fab md-fab-top-right" ng-click="$ctrl.copy('Public key', $ctrl.derivePub($ctrl.path).xpubkey)" aria-label="Copy public key" title="Copy public key">
+    <md-icon md-svg-icon="public_key"></md-icon>
+  </md-button>
 </md-bottom-sheet>

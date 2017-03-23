@@ -15,6 +15,10 @@ export default angular.module( 'starter-app', [ 'ngMaterial', Users.name ] )
       .defaultIconSet("./assets/svg/avatars.svg", 128)
       .icon("device_hub", "./assets/svg/device_hub.svg", 24)
       .icon("panorama_fish_eye", "./assets/svg/panorama_fish_eye.svg", 24)
+      .icon("public_key", "./assets/svg/public.svg", 24)
+      .icon("private_key", "./assets/svg/key.svg", 24)
+      .icon("sign", "./assets/svg/sign.svg", 24)
+      .icon("verify", "./assets/svg/check.svg", 24)
       .icon("menu", "./assets/svg/menu.svg", 24)
       .icon("share", "./assets/svg/share.svg", 24)
       .icon("google_plus", "./assets/svg/google_plus.svg", 24)
@@ -23,7 +27,7 @@ export default angular.module( 'starter-app', [ 'ngMaterial', Users.name ] )
       .icon("phone", "./assets/svg/phone.svg", 24);
 
     $mdThemingProvider.theme('default')
-      .primaryPalette('brown')
-      .accentPalette('red');
+      .primaryPalette('deep-purple')
+      .accentPalette('purple');
   })
   .controller('AppController', AppController);

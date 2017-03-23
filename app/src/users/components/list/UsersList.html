@@ -7,12 +7,24 @@
       {{user.name}}
     </md-button>
   </md-list-item>
+  <md-list-item>
+    <md-button ng-click="$ctrl.newIdentity()">
+      <md-icon class="avatar empty-avatar"></md-icon>
+      New identity
+    </md-button>
+  </md-list-item>
   <md-divider/>
   <h3 md-subheader>My Contacts</h3>
   <md-list-item ng-repeat="user in $ctrl.contacts">
     <md-button ng-click="$ctrl.showDetails({user:user})" ng-class="{'selected' : user === $ctrl.selected }">
       <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
       {{user.name}}
+    </md-button>
+  </md-list-item>
+  <md-list-item>
+    <md-button ng-click="$ctrl.newContact()">
+      <md-icon class="avatar empty-avatar"></md-icon>
+      New contact
     </md-button>
   </md-list-item>
 </md-list>

@@ -1,7 +1,31 @@
-<md-icon md-svg-icon="{{$ctrl.selected.avatar}}" class="avatar"></md-icon>
-<h2>{{$ctrl.selected.name}}</h2>
-<p>{{$ctrl.selected.content}}</p>
-
-<md-button class="md-fab md-fab-bottom-right" ng-click="$ctrl.share($event)" aria-label="Share">
-  <md-icon md-svg-icon="share" ></md-icon>
-</md-button>
+<md-card>
+  <md-card-header>
+    <md-card-title>
+      <md-icon md-svg-icon="{{$ctrl.selected.avatar}}" class="avatar"></md-icon>
+      <h2>{{$ctrl.selected.name}}</h2>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content style="overflow-y: auto">
+    <p><strong>xpubkey:</strong></p>
+    <code>{{$ctrl.selected.xpubkey}}</code>
+    <md-button ng-click="$ctrl.copy('Master public key', $ctrl.selected.xpubkey)" class="md-raised-button">Copy</md-button>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-header>
+    <md-card-title>
+      <h3>Hierarchical Deterministic keys for:&nbsp; <code>{{$ctrl.path}}</code></h3>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <md-list class="subpath-list">
+      <md-list-item ng-if="$ctrl.path !== 'm'" ng-click="$ctrl.expand(false)"><span class="subpath-name">..</span></md-list-item>
+      <md-list-item ng-repeat="subpath in $ctrl.subpaths" ng-style="{'background': $index%2==0? '#eee' : 'transparent'}" ng-click="$ctrl.expand(subpath)">
+        <span class="subpath-name">{{subpath}}</span>
+        <span class="spacer"></span>
+        <md-button ng-if="$ctrl.selected.seed" ng-click="$ctrl.showPanel('sign', subpath)" class="md-fab" aria-label="Sign" title="Sign"><md-icon md-svg-icon="sign"></md-icon></md-button>
+        <md-button ng-click="$ctrl.showPanel('verify', subpath)" class="md-fab" aria-label="Verify signature" title="Verify signature"><md-icon md-svg-icon="verify"></md-icon></md-button>
+      </md-list-item>
+     </md-list>
+  </md-card-content>
+</md-card>

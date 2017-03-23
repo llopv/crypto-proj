@@ -126,6 +126,10 @@ md-toolbar h1 {
   -moz-transform: scale(0.70);
 }
 
+.empty-avatar {
+  background: lightgrey;
+}
+
 md-bottom-sheet md-icon {
   margin-right: 20px;
 }
@@ -134,4 +138,20 @@ span.name {
   font-weight: bold;
   font-size: 1.1em;
   padding-left: 5px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.subpath-list .subpath-name {
+  font-family: monospace;
+}
+
+md-bottom-sheet md-icon {
+  margin-right: 10px;
 }
