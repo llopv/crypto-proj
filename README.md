@@ -4,5 +4,5 @@ This is an Angular 2 application. To initiate it, install [NodeJS](https://nodej
 
 ```sh
 $ npm install
-$ npm
+$ npm run serve
 ```
